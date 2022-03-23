@@ -5,7 +5,6 @@ function App() {
   const [field, setField] = useState([])
   const [loading, setLoading] = useState(false)
   const array = ["Name", "Age"]
-  var count = 0;
 
   // * * ONE TIME GET 
   // const getField = () => {
@@ -141,25 +140,27 @@ function App() {
     <div className="container h-screen">
       <div className="container h-full flex flex-col items-center">
         <h1 className="text-4xl font-bold mt-4">Users</h1>
-        {field.map((item) => (
-          <div className="mt-4" key={item.id}>
-            <div className="flex flex-row">
-              <p>Name: {item.name + " |"}</p>
-              <button onClick={buttonClick} id={item.name+item.id+"button"} className="ml-2">Edit | </button>
-              <button onClick={deleteButton} id={item.name+item.id+"delete"} className="ml-2 text-red-500">Delete</button>
-              <input className="border-black border-[1px] ml-2 pl-2 hidden" id={item.name + item.id} type="text" placeholder="New name"/>
-              <button id={item.name+item.id+"save"} className="ml-2 hidden">Save</button>
-              <button id={item.name+item.id+"cancel"} className="ml-2 hidden">Cancel</button>
+        {field.length > 0 ? (
+          field.map((item) => (
+            <div className="mt-4" key={item.id}>
+              <div className="flex flex-row">
+                <p>Name: {item.name + " |"}</p>
+                <button onClick={buttonClick} id={item.name+item.id+"button"} className="ml-2">Edit | </button>
+                <button onClick={deleteButton} id={item.name+item.id+"delete"} className="ml-2 text-red-500">Delete</button>
+                <input className="border-black border-[1px] ml-2 pl-2 hidden" id={item.name + item.id} type="text" placeholder="New name"/>
+                <button id={item.name+item.id+"save"} className="ml-2 hidden">Save</button>
+                <button id={item.name+item.id+"cancel"} className="ml-2 hidden">Cancel</button>
+              </div>
+              <div className="flex flex-row">
+                <p>Age: {item.age + " |"}</p>
+                <button onClick={ageClick} id={item.name+item.id+"buttonage"} className="ml-2">Edit </button>
+                <input className="border-black border-[1px] ml-2 pl-2 hidden" id={item.name + item.id+"age"} type="text" placeholder="New name"/>
+                <button id={item.name+item.id+"saveage"} className="ml-2 hidden">Save</button>
+                <button id={item.name+item.id+"cancelage"} className="ml-2 hidden">Cancel</button>
+              </div>
             </div>
-            <div className="flex flex-row">
-              <p>Age: {item.age + " |"}</p>
-              <button onClick={ageClick} id={item.name+item.id+"buttonage"} className="ml-2">Edit </button>
-              <input className="border-black border-[1px] ml-2 pl-2 hidden" id={item.name + item.id+"age"} type="text" placeholder="New name"/>
-              <button id={item.name+item.id+"saveage"} className="ml-2 hidden">Save</button>
-              <button id={item.name+item.id+"cancelage"} className="ml-2 hidden">Cancel</button>
-            </div>
-          </div>
-        ))}
+          ))
+        ):(<p className="mt-2">None</p>)}
         <h1 className="text-4xl font-bold mt-10">Add new field</h1>
         <div className="flex flex-col justify-end items-end mt-4">
           {array.map((item, i) => (
