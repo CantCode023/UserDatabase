@@ -170,7 +170,7 @@ function App() {
           ))}
           <div className="flex justify-center items-center w-full">
             <button className="mb-16" onClick={() => addField({
-              id: "user" + (parseInt(field[field.length-1].id.split("user")[1]) + 1).toString(),
+              id: field.length > 0?"user" + (parseInt(field[field.length-1].id.split("user")[1]) + 1).toString():"user1",
               name: document.getElementById("input0").value,
               age: document.getElementById("input1").value,
             })} id="add">Add</button>
